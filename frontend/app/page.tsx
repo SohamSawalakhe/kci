@@ -95,18 +95,38 @@ export default function Home() {
       {/* ── OUR TENANTS ── */}
       <section className="py-20 px-6 bg-white border-t border-gray-100">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} custom={0}
-          className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-[#9c7c3d] text-xs font-bold tracking-[0.2em] uppercase mb-3">Our Portfolio</p>
-            <h2 className="text-3xl md:text-4xl font-cardo font-bold text-gray-900">Our Tenants</h2>
+          className="w-full max-w-[1800px] mx-auto px-4 md:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-[36px] font-cardo font-bold text-gray-900">Our Tenants</h2>
           </div>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 items-center">
+          {/* Mobile & Tablet Grid */}
+          <div className="flex min-[1367px]:hidden flex-wrap justify-center items-center gap-x-4 gap-y-8 sm:gap-10 px-2 lg:px-8">
             {tenants.map((t, i) => (
-              <motion.div key={t.name} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="relative w-28 h-28 rounded-full overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 bg-white flex items-center justify-center p-4">
-                <div className="relative w-full h-full">
-                  <Image src={t.src} alt={t.name} fill className="object-contain" sizes="112px" unoptimized />
-                </div>
+              <motion.div key={`${t.name}-mob`} custom={i} 
+                initial={{ opacity: 0, y: 30, filter: 'grayscale(100%)' }}
+                whileInView={{ 
+                  opacity: 1, 
+                  y: 0, 
+                  filter: 'grayscale(0%)',
+                  transition: {
+                    opacity: { duration: 0.6, delay: i * 0.1 },
+                    y: { duration: 0.6, delay: i * 0.1 },
+                    filter: { duration: 0.6, delay: 1.2 + (i * 0.2) } 
+                  }
+                }}
+                viewport={{ once: true }}
+                className="relative w-[42%] sm:w-40 h-24 sm:h-40 md:w-52 md:h-52 flex items-center justify-center">
+                <Image src={t.src} alt={t.name} fill className="object-contain" sizes="(max-width: 1366px) 200px, 0px" unoptimized />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Desktop Display */}
+          <div className="hidden min-[1367px]:flex flex-nowrap justify-center items-center gap-8">
+            {tenants.map((t, i) => (
+              <motion.div key={`${t.name}-desk`} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
+                className="relative w-auto h-[220px] xl:h-[280px] flex-1 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105">
+                <Image src={t.src} alt={t.name} fill className="object-contain" sizes="300px" unoptimized />
               </motion.div>
             ))}
           </div>
@@ -114,9 +134,9 @@ export default function Home() {
       </section>
 
       {/* ── INVESTMENT HIGHLIGHTS ── */}
-      <section className="bg-gradient-to-r from-[#7a5f2a] via-[#8B6E2A] to-[#7a5f2a] py-16 px-6 shadow-inner">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-7 gap-y-12 gap-x-6 text-center text-white">
+      <section className="bg-gradient-to-r from-[#7a5f2a] via-[#8B6E2A] to-[#7a5f2a] py-16 lg:py-24 px-6 shadow-inner">
+        <div className="w-full max-w-[1700px] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-y-14 gap-x-8 text-center text-white">
             {[
               { icon: TrendingUp, label: "Higher Returns" },
               { icon: PieChart, label: "Diverse Assets" },
@@ -127,9 +147,9 @@ export default function Home() {
               { icon: History, label: "Longterm Stability" },
             ].map((item, i) => (
               <motion.div key={item.label} custom={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="flex flex-col items-center gap-4 group">
-                <item.icon size={48} strokeWidth={1.5} className="text-[#E5D8B8] group-hover:scale-110 group-hover:text-white transition-all duration-300" />
-                <span className="font-cardo font-bold text-sm md:text-base tracking-wide text-white/90 group-hover:text-white">{item.label}</span>
+                className="flex flex-col items-center lg:gap-5 gap-4 group cursor-default">
+                <item.icon strokeWidth={1.5} className="w-12 h-12 lg:w-[60px] lg:h-[60px] text-[#E5D8B8] group-hover:scale-110 group-hover:-translate-y-2 group-hover:text-white transition-all duration-300 drop-shadow-sm" />
+                <span className="font-cardo font-bold text-sm md:text-base lg:text-lg tracking-wider text-white/95 group-hover:text-white transition-colors duration-300 whitespace-nowrap">{item.label}</span>
               </motion.div>
             ))}
           </div>
