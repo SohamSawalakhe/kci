@@ -11,12 +11,12 @@ export default function AboutPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/web-services/tenants/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/web-services/tenants/`)
       .then(res => res.json())
       .then(data => setTenants(data))
       .catch(err => console.error("Error fetching tenants:", err));
 
-    fetch('http://127.0.0.1:8000/web-services/site-stats/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/web-services/site-stats/`)
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error("Error fetching site stats:", err));

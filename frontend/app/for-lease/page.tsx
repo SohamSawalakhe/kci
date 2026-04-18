@@ -18,7 +18,7 @@ export default function ForLeasePage() {
   const [leasedProperties, setLeasedProperties] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/web-services/properties/?property_type=FOR_LEASE")
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/web-services/properties/?property_type=FOR_LEASE`)
       .then((res) => res.json())
       .then((data: any[]) => {
         setActiveProperties(data.filter((p) => p.status === "ACTIVE"));
