@@ -26,12 +26,12 @@ export default function ProjectsInvestedIn() {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/web-services/invested-projects/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/web-services/invested-projects/`)
       .then(res => res.json())
       .then(data => setProperties(data))
       .catch(err => console.error("Error fetching invested projects:", err));
 
-    fetch('http://127.0.0.1:8000/web-services/site-stats/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/web-services/site-stats/`)
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error("Error fetching site stats:", err));
