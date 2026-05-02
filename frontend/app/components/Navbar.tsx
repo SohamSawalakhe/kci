@@ -39,7 +39,7 @@ export default function Navbar() {
         {/* Logo + Name */}
         <Link href="/" className="flex items-center gap-3 flex-shrink-0">
           <Image
-            src="https://kanjicapitalinvestments.com/wp-content/uploads/2024/05/small-size-kci-logo.jpg"
+            src="logo.png"
             alt="KCI"
             width={240}
             height={70}

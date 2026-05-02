@@ -43,7 +43,7 @@ export default function ProjectsInvestedIn() {
       <section className="relative w-full py-24 md:py-32 flex items-center justify-center overflow-hidden bg-gray-900 border-b-8 border-[#9c7c3d]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://kanjicapitalinvestments.com/wp-content/uploads/2024/05/5-2.png"
+            src="5-2.png"
             alt="Houston skyline"
             fill
             className="object-cover opacity-20"
@@ -114,7 +114,7 @@ export default function ProjectsInvestedIn() {
                 variants={fadeUp}
                 className="group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100"
               >
-                <div 
+                <div
                   className="relative w-full aspect-[4/3] overflow-hidden cursor-zoom-in"
                   onClick={() => setSelectedImage(p.image || "/images/building_1.png")}
                 >
@@ -126,7 +126,7 @@ export default function ProjectsInvestedIn() {
                     unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  
+
                   {/* Tags */}
                   <div className="absolute top-3 right-3 flex flex-col gap-1.5 items-end">
                     {(p.tags_list || []).map((tag: string) => (
@@ -153,27 +153,27 @@ export default function ProjectsInvestedIn() {
       {/* ── LIGHTBOX ── */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-10"
             onClick={() => setSelectedImage(null)}
           >
-            <button 
+            <button
               className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
               onClick={() => setSelectedImage(null)}
             >
               <X size={32} />
             </button>
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <Image 
+              <Image
                 src={selectedImage}
                 alt="Full size project view"
                 fill

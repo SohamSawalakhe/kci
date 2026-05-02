@@ -50,21 +50,21 @@ export default function Footer() {
             </h2>
           </div>
           <div className="flex-1 w-full flex flex-col md:items-end">
-            <form 
+            <form
               onSubmit={handleSubmit}
-              className="flex w-full max-w-md shadow-sm h-[52px] rounded-lg overflow-hidden" 
+              className="flex w-full max-w-md shadow-sm h-[52px] rounded-lg overflow-hidden"
               aria-label="Newsletter subscription"
             >
-              <input 
-                type="email" 
-                placeholder="Type your email..." 
+              <input
+                type="email"
+                placeholder="Type your email..."
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="px-5 flex-1 text-sm bg-white border border-gray-200 border-r-0 focus:outline-none focus:border-[#9c7c3d] min-w-0 text-gray-700"
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={status === 'loading'}
                 className="bg-[#9c7c3d] hover:bg-[#856a34] text-white font-bold px-8 text-sm transition-colors whitespace-nowrap disabled:opacity-50"
               >
@@ -87,7 +87,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link href="/">
               <Image
-                src="https://kanjicapitalinvestments.com/wp-content/uploads/2024/05/small-size-kci-logo.jpg"
+                src="logo.png"
                 alt="KCI"
                 width={160}
                 height={50}
